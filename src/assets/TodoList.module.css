@@ -1,0 +1,15 @@
+.TodoList{
+    margin-top: 2vw;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.TodoList button:active{
+    background-color: #65c4ff;
+    color:antiquewhite;
+}
+
+.TodoList div{
+    border: .5em solid #65c4ff;
+    border-radius:2em solid black;
+}
