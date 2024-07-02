@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import "bootstrap/dist/css/bootstrap.css"
 import reportWebVitals from './reportWebVitals';
-import TodoItemsContextProvider from './store/context';
+import TodoItemsContextProvider from './Todo-App-2/store/context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
