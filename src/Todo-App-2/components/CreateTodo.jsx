@@ -5,22 +5,29 @@ import { TodoItemsContext } from "../store/context";
 
 const CreateTodo = ()=>{
   
-const {newTodo,setNewTodo,handleAddTodo,toggleCreateBtn}=useContext(TodoItemsContext);
+const {newTodo,setNewTodo,handleAddTodo,toggleCreateBtn,showMessage,setShowMessage}=useContext(TodoItemsContext);
      
   
 
   const handleInputChange = (e) => {
     
     const { name, value } = e.target;
+    
     setNewTodo((newTodo) => (
         { ...newTodo,id:uuid() ,[name]: value ,completed:false})
     )};
 
     function handleSubmit(e){
         e.preventDefault()
+        if(newTodo.name.length === 0 && newTodo.dueDate.length===0){
+            setShowMessage(true)
+        }
+        else{
         handleAddTodo(newTodo);
         setNewTodo({id:"",name:"",dueDate:"",completed:null})
         }
+        }
+  
 
     return (
         <div className="todos__forms">

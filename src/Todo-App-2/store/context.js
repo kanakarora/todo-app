@@ -26,13 +26,9 @@ const reducer = (todoItems,action)=>{
     switch (type){
      case ACTIONS.ADD_TODO:
        
-  const {newTodo,setIsEditItem,toggleCreateBtn,setToggleCreateBtn,setNewTodo,isEditItem,setShowMessage} = payload;
+  const {newTodo,setIsEditItem,toggleCreateBtn,setToggleCreateBtn,setNewTodo,isEditItem} = payload;
  
-        if(newTodo.name==="" && newTodo.dueDate===""){
-            setShowMessage(true);
-            
-        }
-        else if (newTodo && toggleCreateBtn){
+      if (newTodo && toggleCreateBtn){
         updatedTodoItems= todoItems.map(item=>{
                 if(item.id === isEditItem){
                    return {...item,name:newTodo.name,dueDate:newTodo.dueDate}
@@ -40,7 +36,7 @@ const reducer = (todoItems,action)=>{
                 }
                 return item;
             })
-            setToggleCreateBtn(true);
+            setToggleCreateBtn(false);
             return (updatedTodoItems);
            
         }
@@ -51,12 +47,9 @@ const reducer = (todoItems,action)=>{
             return updatedTodoItems;
             
         }
-        console.log("Hii");
-        setNewTodo("");
-        console.log("processing");
+         setNewTodo({name:"" , dueDate:""});
          setIsEditItem(null);
-         console.log(isEditItem);
-         console.log("bye");
+        
         
          
        break;
@@ -116,7 +109,7 @@ const TodoItemsContextProvider = ({children})=>{
 
    
     return(
-        <TodoItemsContext.Provider value={{todoItems,handleRemoveTodo,handleToggleTodo,toggleCreateBtn,handleAddTodo,handleEditTodo,newTodo,setNewTodo,showMessage}}>
+        <TodoItemsContext.Provider value={{todoItems,handleRemoveTodo,handleToggleTodo,toggleCreateBtn,handleAddTodo,handleEditTodo,newTodo,setNewTodo,showMessage,setShowMessage}}>
             {children}
             </TodoItemsContext.Provider>
     )
